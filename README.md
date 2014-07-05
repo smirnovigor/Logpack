@@ -1,5 +1,9 @@
 # Logpack #
 ## Modular and extendable logger ##
+ To instal logpack run bower command:
+ `bower install logpack`
+ 
+## Description ##
  The Logpack is global log's modules collection, that helps to build complex and modular logger.
  Each module easy to configure and can be replaced by your own module.
  The Logpack contains:
