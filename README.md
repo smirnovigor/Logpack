@@ -149,7 +149,7 @@
       LogWithMyOwnBuffer.info('Contact:', contact);
  ```
 ## Documentation ##
-To run logpack docs run `grunt`
+To run logpack docs run `grunt docs`
 
 ## Testing ##
 To test logpack run `karma start`
