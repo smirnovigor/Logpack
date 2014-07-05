@@ -136,6 +136,8 @@
       Log.info('Contact:', contact);
       LogWithMyOwnBuffer.info('Contact:', contact);
  ```
+## Testing ##
+To test logpack run `karma start`
 
 # Browsers support #
 
