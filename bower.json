@@ -1,6 +1,0 @@
-{
-    "name": "Logpack",
-    "dependencies": {
-        "stacktrace.js": "0.6.0"
-    }
-}
