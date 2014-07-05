@@ -3,7 +3,7 @@
     "version":"0.1.0",
     "main": "./logpack.js",
     "dependencies": {
-        "stacktrace.js": "0.6.0"
+        
     },
     "ignore": [
     "**/.*",
