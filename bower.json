@@ -1,6 +1,12 @@
 {
     "name": "Logpack",
+    "main": "./logpack.js",
     "dependencies": {
         "stacktrace.js": "0.6.0"
-    }
+    },
+    "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
 }
