@@ -2,7 +2,19 @@
 ## Modular and extendable logger ##
  To instal logpack run bower command:
  `bower install logpack`
- 
+ or just include logpack.js file on your page, and call it like so:
+```html
+<script type="text/javascript" src="https://raw.githubusercontent.com/smirnovigor/Logpack/master/logpack.js"></script>
+<script type="text/javascript">
+    // your code...
+    var Log = Logpack.LogFactory().getDefault();
+    Log.debug('Contact:', contact);
+</script>
+```
+ To extend log message with additional information like loging file name, function and line number include to your page [stacktrace.js](https://github.com/stacktracejs/stacktrace.js) library
+```html
+<script type="text/javascript" src="https://rawgithub.com/stacktracejs/stacktrace.js/master/stacktrace.js"></script>
+```
 ## Description ##
  The Logpack is global log's modules collection, that helps to build complex and modular logger.
  Each module easy to configure and can be replaced by your own module.
