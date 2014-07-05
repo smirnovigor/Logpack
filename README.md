@@ -11,7 +11,7 @@
     Log.debug('Contact:', contact);
 </script>
 ```
- To extend log message with additional information like loging file name, function and line number include to your page [stacktrace.js](https://github.com/stacktracejs/stacktrace.js) library
+ To extend log's messages with additional information like loging file name, function and line number include to your page [stacktrace.js](https://github.com/stacktracejs/stacktrace.js) library
 ```html
 <script type="text/javascript" src="https://rawgithub.com/stacktracejs/stacktrace.js/master/stacktrace.js"></script>
 ```
