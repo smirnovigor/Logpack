@@ -140,5 +140,4 @@
 To test logpack run `karma start`
 
 # Browsers support #
-
- All modern browsers and IE 9+
+All modern browsers and IE 9+
