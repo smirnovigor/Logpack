@@ -405,7 +405,8 @@
                     _self._buffer.store({level:level, formattedMessages:_self._formatter.format(level, stack, args)}, function(messageObjectStack){
                         for(var i = 0; i < messageObjectStack.length; i++){
                             var logFunc = console[Logpack.LEVEL.LEVEL_TO_STRING(messageObjectStack[i].level)] || _noop;
-                            logFunc.apply(console, messageObjectStack[i].formattedMessages);
+                            var args = messageObjectStack[i].formattedMessages instanceof Array ? messageObjectStack[i].formattedMessages : [messageObjectStack[i].formattedMessages];
+                            logFunc.apply(console, args);
                         }
                     }, level == Logpack.LEVEL.ERROR);
                 }
@@ -962,7 +963,7 @@
         var _self = this;
 
         var _format = function(level, stack, messages) {
-            return [{
+            return {
                 "LogData" : {
                     "Log_level" : Logpack.LEVEL.LEVEL_TO_STRING(level),
                     "Message_Text" : _formatMessages(messages),
@@ -972,7 +973,7 @@
                     "line" : _getLineNumber(stack),
                     "Event_Id" : _getUid()
                 }
-            }];
+            };
         };
 
 
