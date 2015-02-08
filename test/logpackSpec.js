@@ -1,6 +1,6 @@
-'use strict';
+describe('Logpack', function(){
+    'use strict';
 
-ddescribe('Logpack', function(){
     var LogFactory;
 
     describe('LEVEL', function(){
@@ -181,7 +181,7 @@ ddescribe('Logpack', function(){
     });
 
     describe('Default Log', function(){
-        var Log
+        var Log;
 
         beforeEach(function(){
             Log = LogFactory.getDefault();
@@ -215,15 +215,11 @@ ddescribe('Logpack', function(){
         });
     });
 
-    describe('log levels with console writer', function(){
-        var LogDebug, LogInfo, LogWarn, LogError, LogSilent;
+    describe('DEBUG log levels with console writer', function() {
+        var Log;
 
-        beforeEach(function(){
-            LogDebug = LogFactory.setLogWriters(Logpack.WriterFactory().Console().setLevel(Logpack.LEVEL.DEBUG).create()).create();
-            LogInfo = LogFactory.setLogWriters(Logpack.WriterFactory().Console().setLevel(Logpack.LEVEL.INFO).create()).create();
-            LogWarn = LogFactory.setLogWriters(Logpack.WriterFactory().Console().setLevel(Logpack.LEVEL.WARNING).create()).create();
-            LogError = LogFactory.setLogWriters(Logpack.WriterFactory().Console().setLevel(Logpack.LEVEL.ERROR).create()).create();
-            LogSilent = LogFactory.setLogWriters(Logpack.WriterFactory().Console().setLevel(Logpack.LEVEL.SILENT).create()).create();
+        beforeEach(function () {
+            Log = LogFactory.setLogWriters(Logpack.WriterFactory().Console().setLevel(Logpack.LEVEL.DEBUG).create()).create();
 
             spyOn(console, 'log');
             spyOn(console, 'debug');
@@ -232,11 +228,11 @@ ddescribe('Logpack', function(){
             spyOn(console, 'error');
         });
 
-        it('DEBUG level log should call to "debug", "info", "warn", "error" consoles methods', function(){
-            LogDebug.debug('debug msg');
-            LogDebug.info('info msg');
-            LogDebug.warn('warn msg');
-            LogDebug.error('error msg');
+        it('should call to "debug", "info", "warn", "error" consoles methods only', function () {
+            Log.debug('debug msg');
+            Log.info('info msg');
+            Log.warn('warn msg');
+            Log.error('error msg');
 
             expect(console.log).not.toHaveBeenCalled();
             expect(console.debug).toHaveBeenCalled();
@@ -244,12 +240,26 @@ ddescribe('Logpack', function(){
             expect(console.warn).toHaveBeenCalled();
             expect(console.error).toHaveBeenCalled();
         });
+    });
 
-        it('INFO level log should call to "info", "warn", "error" consoles methods only', function(){
-            LogInfo.debug('debug msg');
-            LogInfo.info('info msg');
-            LogInfo.warn('warn msg');
-            LogInfo.error('error msg');
+    describe('INFO log levels with console writer', function() {
+        var Log;
+
+        beforeEach(function () {
+            Log = LogFactory.setLogWriters(Logpack.WriterFactory().Console().setLevel(Logpack.LEVEL.INFO).create()).create();
+
+            spyOn(console, 'log');
+            spyOn(console, 'debug');
+            spyOn(console, 'info');
+            spyOn(console, 'warn');
+            spyOn(console, 'error');
+        });
+
+        it('should call to "info", "warn", "error" consoles methods only', function () {
+            Log.debug('debug msg');
+            Log.info('info msg');
+            Log.warn('warn msg');
+            Log.error('error msg');
 
             expect(console.log).not.toHaveBeenCalled();
             expect(console.debug).not.toHaveBeenCalled();
@@ -257,12 +267,26 @@ ddescribe('Logpack', function(){
             expect(console.warn).toHaveBeenCalled();
             expect(console.error).toHaveBeenCalled();
         });
+    });
 
-        it('WARNING level log should call to "warn", "error" consoles methods only', function(){
-            LogWarn.debug('debug msg');
-            LogWarn.info('info msg');
-            LogWarn.warn('warn msg');
-            LogWarn.error('error msg');
+    describe('WARNING log levels with console writer', function() {
+        var Log;
+
+        beforeEach(function () {
+            Log = LogFactory.setLogWriters(Logpack.WriterFactory().Console().setLevel(Logpack.LEVEL.WARNING).create()).create();
+
+            spyOn(console, 'log');
+            spyOn(console, 'debug');
+            spyOn(console, 'info');
+            spyOn(console, 'warn');
+            spyOn(console, 'error');
+        });
+
+        it('should call to "warn", "error" consoles methods only', function () {
+            Log.debug('debug msg');
+            Log.info('info msg');
+            Log.warn('warn msg');
+            Log.error('error msg');
 
             expect(console.log).not.toHaveBeenCalled();
             expect(console.debug).not.toHaveBeenCalled();
@@ -270,12 +294,26 @@ ddescribe('Logpack', function(){
             expect(console.warn).toHaveBeenCalled();
             expect(console.error).toHaveBeenCalled();
         });
+    });
 
-        it('ERROR level log should call to  "error" consoles method only', function(){
-            LogError.debug('debug msg');
-            LogError.info('info msg');
-            LogError.warn('warn msg');
-            LogError.error('error msg');
+    describe('ERROR log levels with console writer', function() {
+        var Log;
+
+        beforeEach(function () {
+            Log = LogFactory.setLogWriters(Logpack.WriterFactory().Console().setLevel(Logpack.LEVEL.ERROR).create()).create();
+
+            spyOn(console, 'log');
+            spyOn(console, 'debug');
+            spyOn(console, 'info');
+            spyOn(console, 'warn');
+            spyOn(console, 'error');
+        });
+
+        it('should call to "error" consoles method only', function () {
+            Log.debug('debug msg');
+            Log.info('info msg');
+            Log.warn('warn msg');
+            Log.error('error msg');
 
             expect(console.log).not.toHaveBeenCalled();
             expect(console.debug).not.toHaveBeenCalled();
@@ -283,12 +321,26 @@ ddescribe('Logpack', function(){
             expect(console.warn).not.toHaveBeenCalled();
             expect(console.error).toHaveBeenCalled();
         });
+    });
 
-        it('SILENT level log should not call to any consoles methods', function(){
-            LogSilent.debug('debug msg');
-            LogSilent.info('info msg');
-            LogSilent.warn('warn msg');
-            LogSilent.error('error msg');
+    describe('SILENT log levels with console writer', function() {
+        var Log;
+
+        beforeEach(function () {
+            Log = LogFactory.setLogWriters(Logpack.WriterFactory().Console().setLevel(Logpack.LEVEL.SILENT).create()).create();
+
+            spyOn(console, 'log');
+            spyOn(console, 'debug');
+            spyOn(console, 'info');
+            spyOn(console, 'warn');
+            spyOn(console, 'error');
+        });
+
+        it('should not call to any consoles methods', function () {
+            Log.debug('debug msg');
+            Log.info('info msg');
+            Log.warn('warn msg');
+            Log.error('error msg');
 
             expect(console.log).not.toHaveBeenCalled();
             expect(console.debug).not.toHaveBeenCalled();

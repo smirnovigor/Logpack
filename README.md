@@ -152,7 +152,7 @@
 To run logpack docs run `grunt docs`
 
 ## Testing ##
-To test logpack run `karma start`
+To test logpack run `karma start` or `grunt karma`
 
 # Browsers support #
 All modern browsers and IE 9+

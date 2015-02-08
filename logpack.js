@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @ngdoc overview
  * @name Logpack
@@ -13,7 +11,7 @@
  * <div doc-module-components="Global.Logpack"></div>
  */
 (function(window){
-
+    'use strict';
 
     var _noop = function(){};
 
@@ -340,7 +338,7 @@
                     create : function(){
                         return _self.ConsoleWriter();
                     }
-                }
+                };
             },
 
             /**
@@ -380,9 +378,9 @@
                     create : function(){
                         return _self.ServerWriter(_url);
                     }
-                }
+                };
             }
-        }
+        };
     };
 
 
@@ -437,7 +435,7 @@
                             req.open('POST', url);
                             req.send(JSON.stringify(formattedMessages));
                         }
-                    }, level == Logpack.LEVEL.ERROR)
+                    }, level == Logpack.LEVEL.ERROR);
                 }
             }
         };
@@ -562,7 +560,7 @@
                     create : function(){
                         return _self.SizeBuffer(sizeBufferStamp, _size || defaultSize);
                     }
-                }
+                };
             },
 
             /**
@@ -597,7 +595,7 @@
                     create : function(){
                         return _self.TimeBuffer(timeBufferStamp, _time || defaultTime);
                     }
-                }
+                };
             },
 
             /**
@@ -632,9 +630,9 @@
                     create : function(){
                         return _self.CountBuffer(timeBufferStamp, _count || defaultCount);
                     }
-                }
+                };
             }
-        }
+        };
     };
 
 
@@ -818,8 +816,6 @@
      */
     var FormatterFactoryObj = function(){
         var _self = this;
-        this._uidManager;
-
 
         return {
             /**
@@ -849,7 +845,7 @@
                     create : function(){
                         return _self.SimpleFormatter();
                     }
-                }
+                };
             },
 
             /**
@@ -879,9 +875,9 @@
                     create : function(){
                         return _self.JsonFormatter();
                     }
-                }
+                };
             }
-        }
+        };
     };
 
 
@@ -910,8 +906,7 @@
         var _formatError = function(arg) {
             if (arg instanceof Error) {
                 if (arg.stack) {
-                    arg = (arg.message && arg.stack.indexOf(arg.message) === -1)
-                        ? 'Error: ' + arg.message + '\n' + arg.stack : arg.stack;
+                    arg = (arg.message && arg.stack.indexOf(arg.message) === -1) ? 'Error: ' + arg.message + '\n' + arg.stack : arg.stack;
                 } else if (arg.sourceURL) {
                     arg = arg.message + '\n' + arg.sourceURL + ':' + arg.line;
                 }
@@ -998,8 +993,7 @@
             if (arg instanceof Object) {
                 if (arg instanceof Error) {
                     if (arg.stack) {
-                        return (arg.message && arg.stack.indexOf(arg.message) === -1)
-                            ? 'Error: ' + arg.message + '\n' + arg.stack : arg.stack;
+                        return (arg.message && arg.stack.indexOf(arg.message) === -1) ? 'Error: ' + arg.message + '\n' + arg.stack : arg.stack;
                     } else if (arg.sourceURL) {
                         return arg.message + '\n' + arg.sourceURL + ':' + arg.line;
                     }
@@ -1226,8 +1220,8 @@
                 }
             }
         },
-        FormatterFactory : function(){return new FormatterFactoryObj()},
-        BufferFactory : function(storage){return new BufferFactoryObj(storage || window.sessionStorage)},
+        FormatterFactory : function(){return new FormatterFactoryObj();},
+        BufferFactory : function(storage){return new BufferFactoryObj(storage || window.sessionStorage);},
         WriterFactory : function(){return new WriterFactoryObj(this.BufferFactory().getDefault(), this.FormatterFactory().getDefault());},
         LogFactory : function(){return new LogFactoryObj(this.WriterFactory().getDefault());}
     };
